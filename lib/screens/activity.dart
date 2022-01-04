@@ -10,6 +10,29 @@ class Activity extends StatefulWidget {
 class _ActivityState extends State<Activity> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: Text('Activity')));
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.black,
+        child: const Icon(Icons.add),
+      ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              left: 24,
+              top: 40,
+              child: Text(
+                'Activity',
+                style: Theme.of(context).textTheme.headline3!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

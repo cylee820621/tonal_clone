@@ -21,7 +21,7 @@ class _CustomState extends State<Custom> {
           children: [
             Positioned(
               left: 24,
-              top: 48,
+              top: 40,
               child: Text(
                 'Custom',
                 style: Theme.of(context).textTheme.headline3!.copyWith(
