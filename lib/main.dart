@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tonal_clone/screens/activity.dart';
 import 'package:tonal_clone/screens/custom.dart';
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(CupertinoIcons.list_bullet),
             label: 'Activity',
           ),
           BottomNavigationBarItem(
@@ -77,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Explore',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
+            icon: Icon(CupertinoIcons.rectangle_grid_1x2),
             label: 'Custom',
           ),
         ],
