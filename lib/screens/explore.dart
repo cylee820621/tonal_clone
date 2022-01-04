@@ -8,15 +8,30 @@ class Explore extends StatefulWidget {
 }
 
 class _ExploreState extends State<Explore> {
+  bool appBarIsShowed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
-              child: Row(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: appBarIsShowed
+            ? const Text(
+                'Explore',
+                style: TextStyle(color: Colors.black),
+              )
+            : null,
+        elevation: 0,
+        backgroundColor: appBarIsShowed
+            ? Colors.white.withOpacity(0.97)
+            : Colors.transparent,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            children: [
+              const SizedBox(height: 80),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -26,14 +41,14 @@ class _ExploreState extends State<Explore> {
                           color: Colors.black,
                         ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.search,
                     size: 40,
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

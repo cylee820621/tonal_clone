@@ -21,19 +21,36 @@ class Header extends StatelessWidget {
             Text('CY', style: headerStyle)
           ],
         ),
-        CupertinoButton(
-          borderRadius: BorderRadius.circular(50),
-          padding: EdgeInsets.zero,
-          color: Colors.purple,
-          child: const Text(
-            'C',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
+        Container(
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xff8a10e0),
+                Color(0xff8a10e0),
+                Color(0xff6020dd),
+                Color(0xff4a29d9),
+                Color(0xff3133d7),
+                Color(0xff0c42d2)
+              ],
             ),
-            textAlign: TextAlign.center,
           ),
-          onPressed: () {},
+          child: CupertinoButton(
+            borderRadius: BorderRadius.circular(50),
+            padding: EdgeInsets.zero,
+            child: const Text(
+              'C',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            onPressed: () {},
+          ),
         )
       ],
     );

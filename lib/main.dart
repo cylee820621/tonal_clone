@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tonal_clone/screens/activity.dart';
 import 'package:tonal_clone/screens/custom.dart';
 import 'package:tonal_clone/screens/explore.dart';
@@ -16,8 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tonal Clone',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.dark, // 2
+        ),
         primarySwatch: Colors.blue,
         backgroundColor: const Color(0xFFf7f7f7),
         shadowColor: Colors.grey,

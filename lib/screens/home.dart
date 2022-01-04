@@ -9,47 +9,41 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  ScrollController? _controller;
-  bool showAppbarTitle = false;
-
-  _scrollListener() {
-    if (_controller!.offset >= _controller!.position.maxScrollExtent &&
-        !_controller!.position.outOfRange) {
-      setState(() {
-        showAppbarTitle = true;
-      });
-    }
-    if (_controller!.offset <= _controller!.position.minScrollExtent &&
-        !_controller!.position.outOfRange) {
-      setState(() {
-        showAppbarTitle = false;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    _controller = ScrollController();
-    _controller?.addListener(_scrollListener);
-    super.initState();
-  }
-
+  bool appBarIsShowed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
-        title: showAppbarTitle ? Text('Tonal') : null,
+        title: appBarIsShowed
+            ? const Text(
+                'Tonal',
+                style: TextStyle(color: Colors.black),
+              )
+            : null,
         elevation: 0,
+        backgroundColor: appBarIsShowed
+            ? Colors.white.withOpacity(0.97)
+            : Colors.transparent,
       ),
-      body: SafeArea(
+      body: NotificationListener<ScrollUpdateNotification>(
+        onNotification: (notification) {
+          setState(() {
+            if (notification.metrics.pixels >= 40) {
+              appBarIsShowed = true;
+            } else {
+              appBarIsShowed = false;
+            }
+          });
+          return true;
+        },
         child: SingleChildScrollView(
-          controller: _controller,
           child: Padding(
             padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 80),
                 const Header(),
                 const SizedBox(height: 16),
                 SizedBox(
@@ -72,6 +66,8 @@ class _HomeState extends State<Home> {
                 const BulletPoint(content: "Build confidence for what's next"),
                 const SizedBox(height: 24),
                 const Calender(),
+                const SizedBox(height: 24),
+                const StrenghCard(),
               ],
             ),
           ),
