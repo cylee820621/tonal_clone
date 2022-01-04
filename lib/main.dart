@@ -45,18 +45,19 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  List<Widget> screens = const [
-    Home(),
-    Activity(),
-    Explore(),
-    Custom(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: screens[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: const [
+          Home(),
+          Activity(),
+          Explore(),
+          Custom(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
